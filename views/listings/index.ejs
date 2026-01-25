@@ -1,0 +1,53 @@
+<% layout("/layouts/boilerplate") %>
+<h1>All Listings</h1>
+<!-- <form action="/listings/new" method="GET">
+        <button>Create New list</button>
+    </form> -->
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+  <% for(let listing of allListing){ %>
+  <a href="/listings/<%= listing._id %>" class="imgae-link">
+    <div class="card col listing-card">
+      <img
+        src="<%= listing.image.url %>"
+        class="card-img-top"
+        alt="listing_image"
+        style="height: 20rem"
+      />
+      <div class="card-img-overlay overlay">
+       <div class="btn-guest">
+         <button
+          type="button"
+          class="btn btn-primary btn-gus"
+          style="
+            --bs-btn-padding-y: 0.25rem;
+            --bs-btn-padding-x: 0.5rem;
+            --bs-btn-font-size: 0.75rem;
+          "
+        >
+          Guest favourite
+        </button>
+       </div>
+        <div class="icon" onclick="toggleLike(this)">
+        <i class="fa-regular fa-heart"></i>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <b><%= listing.title %></b><br />
+          &#x20B9; <%= listing.price.toLocaleString("en-IN") %> / nights
+        </p>
+      </div>
+    </div>
+  </a>
+  <br />
+  <% } %>
+</div>
+<!-- <ul>
+    <% for(let listing of allListing){ %>
+    <li>
+      <a href="/listings/<%= listing._id %>" style="text-decoration: none"
+        ><%= listing.title %></a
+      >
+    </li>
+    <% } %>
+  </ul> -->

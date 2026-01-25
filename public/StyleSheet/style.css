@@ -1,0 +1,174 @@
+/* // <weight>: Use a value from 200 to 800
+// <uniquifier>: Use a unique and descriptive class name */
+/* 
+.plus-jakarta-sans-<uniquifier> {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+  flex: 1;
+}
+
+
+/* NavBar */
+
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+.fa-compass{
+    color: red;
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: #222222 !important;
+}
+
+/* Footer */
+
+.f-info-links a{
+    text-decoration:none ;
+    color: #222222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-links,.f-info-socials,.f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info{
+    display: flex;
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/* Card */
+.listing-card {
+    border: none !important;
+   margin-bottom: 2rem;
+
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0 !important;
+
+}
+.card-text p{
+   font-weight: 400 !important;
+}
+.imgae-link{
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+/* .overlay{
+    opacity: 0;
+    
+}
+
+.overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+} */
+
+.overlay{
+    display: flex !important;
+    justify-content: space-between !important;
+    
+}
+.btn-gus{
+    background-color: rgb(167, 144, 117) !important;
+    color: black !important;
+    border-radius: 1rem !important;
+    border: none !important;
+}
+
+/*like button */
+
+
+.icon i {
+ color: white !important;             
+  transition: color 0.3s ease !important;
+}
+
+.icon i:hover {
+  color: red !important;               
+}
+
+.icon.liked i {
+  color: red !important;              
+}
+.icon.liked i {
+  color: red !important;
+  transform: scale(1.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+.icon i {
+  transition: all 0.2s ease !important;
+}
+
+/* .icon i {
+  color: white !important;           
+  transition: all 0.3s ease !important;
+}
+
+
+.icon.liked i {
+    
+  color: red !important;              
+  transform: scale(1.2) !important;   
+} */
+
+
+/* new Page css */
+.add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* Show Image */
+.show-image{
+   height: 30vh;
+   
+}
+.btns{
+    display: flex;
+}
+
+.show-card{
+    padding: 0;
+    padding-right: 0;
+}
