@@ -1,9 +1,15 @@
 <% layout("/layouts/boilerplate") %>
 <div class="row">
   <div class="col-8 offset-2">
-    <br><br>
+    <br /><br />
     <h1>Create a New Listing</h1>
-    <form action="/listings" method="POST" class="needs-validation" novalidate>
+    <form
+      action="/listings"
+      method="POST"
+      class="needs-validation"
+      enctype="multipart/form-data"
+      novalidate
+    >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -13,9 +19,7 @@
           class="form-control"
           required
         />
-        <div class="valid-feedback">
-      Title Looks good!
-    </div>
+        <div class="valid-feedback">Title Looks good!</div>
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
@@ -25,20 +29,20 @@
           class="form-control"
           required
         ></textarea>
-         <div class="invalid-feedback">
-        Please should be short descriptin.
+        <div class="invalid-feedback">Please should be short descriptin.</div>
       </div>
-      </div>
+
       <div class="mb-3">
-        <label for="image" class="form-label">Image Link</label>
+        <label for="image" class="form-label">Upload Image file</label>
         <input
-          type="text"
+          type="file"
           name="listing[image][url]"
           id=""
-          placeholder="Enter image Url"
+          placeholder="choose file"
           class="form-control"
         />
       </div>
+
       <div class="row">
         <div class="mb-3 col-md-4">
           <label for="price" class="form-label">Price</label>
@@ -49,12 +53,10 @@
             class="form-control"
             required
           />
-           <div class="invalid-feedback">
-        Price should be valid.
-      </div>
+          <div class="invalid-feedback">Price should be valid.</div>
         </div>
         <div class="mb-3 col-md-8">
-          <label for="counttry"  class="form-label">Country</label>
+          <label for="counttry" class="form-label">Country</label>
           <input
             type="text"
             placeholder="add country"
@@ -62,9 +64,7 @@
             class="form-control"
             required
           />
-           <div class="invalid-feedback">
-         country should be valid.
-      </div>
+          <div class="invalid-feedback">country should be valid.</div>
         </div>
       </div>
       <div class="mb-3">
@@ -76,13 +76,10 @@
           class="form-control"
           required
         />
-         <div class="invalid-feedback">
-        Location should be valid.
-      </div>
+        <div class="invalid-feedback">Location should be valid.</div>
       </div>
 
       <button class="btn add-btn">Submit</button>
-     
     </form>
   </div>
 </div>

@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV != "production"){
+  require('dotenv').config() // or import 'dotenv/config' if you're using ES6
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -72,7 +76,7 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 
 
-main()
+main() 
   .then((res) => {
     console.log("Connection sucessfull");
   })

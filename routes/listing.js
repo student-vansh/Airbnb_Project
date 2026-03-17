@@ -6,28 +6,28 @@ const Listing = require("../models/listing");
 const flash = require("connect-flash");
 const { listingSchema, reviewSchema } = require("../Schema");
 const { isLoggedIn, isOwner, validatelisting } = require("../middleware");
+const multer = require("multer");
+const { storage } = require("../Cloudconfig.js");
+const upload = multer({ storage });
 
 const listingController = require("../Controllers/Listings");
-//Index.js Route
-route.get("/", wrapAsync(listingController.index));
 
-// Create ROute
+route
+  .route("/")
+  .get(wrapAsync(listingController.index))
+  .post(isLoggedIn,upload.single("listing[image][url]"),validatelisting, wrapAsync(listingController.CreateListing));
+// .post(upload.single("listing[image][url]"), (req, res) => {
+//   res.send(req.file);
+// });
 
-route.get("/new", isLoggedIn,listingController.renderNewForm );
+//New ROute
+route.get("/new", isLoggedIn, listingController.renderNewForm);
 
-// put
-
-route.post(
-  "/",
-  isLoggedIn,
-  wrapAsync(listingController.CreateListing),
-);
-
-// Show Route
-route.get(
-  "/:id",
-  wrapAsync(listingController.showListing),
-);
+route
+  .route("/:id")
+  .get(wrapAsync(listingController.showListing))
+  .put(isLoggedIn, isOwner, wrapAsync(listingController.UpdateListing))
+  .delete(isLoggedIn, isOwner, wrapAsync(listingController.DestroyListing));
 
 route.get(
   "/:id/edit",
@@ -35,15 +35,6 @@ route.get(
   isOwner,
   wrapAsync(listingController.EditListing),
 );
-// update
-
-route.put(
-  "/:id",
-  isLoggedIn,
-  isOwner,
-  wrapAsync(listingController.UpdateListing),
-);
-
 // app.put("/listings/:id",validatelisting,wrapAsync(async (req, res) => {
 //   // if(!req.body.listing){
 //   //   throw new ExpressError(400,"Send valid data for listing");
@@ -52,14 +43,4 @@ route.put(
 //   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 //   res.redirect("/listings");
 // }));
-
-// Delete
-
-route.delete(
-  "/:id",
-  isLoggedIn,
-  isOwner,
-  wrapAsync(listingController.DestroyListing),
-);
-
 module.exports = route;

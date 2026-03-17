@@ -42,16 +42,22 @@ module.exports.CreateListing = async (req, res, next) => {
     //   throw new ExpressError(404,result.error);
     // }
 
-    const newList = new Listing({
-      ...req.body.listing,
-      image: {
-        url:
-          req.body.listing.image.url ||
-          "https://dummyimage.com/600x400/000/fff",
-      },
-    });
-    newList.owner = req.user._id;
-    await newList.save();
+    // const newList = new Listing({
+    //   ...req.body.listing,
+    //   image: {
+    //     url:
+    //       req.body.listing.image.url ||
+    //       "https://dummyimage.com/600x400/000/fff",
+    //   },
+    // });
+    let url = req.file.path; 
+    let filename = req.file.filename;
+
+    
+   const newListing = new Listing(req.body.listing);
+   newListing.owner = req.user._id;
+   newListing.image = {filename,url};
+    await newListing.save();
     req.flash("success", "New Listing Created!");
     console.log("list is saved");
     res.redirect("/listings");
